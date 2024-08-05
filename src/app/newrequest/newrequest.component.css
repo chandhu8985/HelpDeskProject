@@ -10,7 +10,6 @@
    background-color: #f9f9f9;
    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
  }
-
  .form-container h1 {
    margin-top: 0;
    text-align: center;
@@ -76,7 +75,7 @@
    height: 100px;
    resize: vertical;
  }
-
+ 
  .form-row1 {
    margin-left: 16px;
  }
@@ -106,7 +105,7 @@
    border-radius: 20%;
    
  }
-
+  
  .button button:hover {
    background-color: #45a049;
  }
@@ -154,7 +153,7 @@
 /* Style for the Update button */
 .btn-update {
   background-color:rgb(48, 185, 231);
-  color: white; 
+  color: black; 
   transition: background-color 0.3s;
 }
 
@@ -165,12 +164,112 @@
 /* Style for the Cancel button */
 .btn-cancel {
   background-color: rgb(48, 185, 231);
-  color: white; 
+  color: black; 
   transition: background-color 0.3s; 
 }
 
 .btn-cancel:hover {
   background-color: #e53935; 
 }
-/* resolved date calendar icon */
+               /*......................... admin update request form............................ */
+ 
+/* Container styling */
+.admin-form-container {
+  width: 50%;
+  height: 400px;
+  margin-top: 120px;
+  margin-left: 400px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
+/* Heading styling */
+.admin-form-container h1 {
+  margin-top: 0;
+   text-align: center;
+   margin-bottom: 20px;
+}
+
+/* Form styling */
+form {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* Styling for left and right sections */
+.left, .right {
+  flex: 1;
+}
+
+/* Row styling */
+.form-row {
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+/* Label styling */
+.form-row label {
+  flex: 0 0 150px;
+   margin-right: 10px;
+   font-weight: bold;
+}
+
+/* Input and textarea styling */
+.form-row input[type="text"],
+.form-row input[type="email"],
+.form-row textarea,
+.form-row select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Disabled input styling */
+.form-row input[disabled],
+.form-row textarea[disabled],
+.form-row select[disabled] {
+  background-color: #f0f0f0;
+  cursor: not-allowed;
+}
+
+/* Button styling */
+.btn-update,
+.btn-cancel {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 30px;
+}
+
+.btn-update {
+  background-color: rgb(48, 185, 231);;
+  color: #fff;
+}
+
+.btn-update:hover {
+  background-color: #218838;
+}
+
+.btn-cancel {
+  background-color: rgb(48, 185, 231);;
+  color: #fff;
+}
+
+.btn-cancel:hover {
+  background-color: #c82333;
+}
+
+/* Ensure the buttons are aligned properly */
+.updaterequestbtn {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 20px;
+}

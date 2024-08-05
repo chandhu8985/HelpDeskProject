@@ -20,15 +20,7 @@ th {
     gap: 5px;
 }
 
-.button button:hover {
-    background-color: #45a049;
-}
-.buttons button:hover{
-    background-color: #ff0000;
-}
-
-
-.button{
+.update-button{
     background-color: rgb(48, 185, 231);
     justify-content: center;
     width:40%;
@@ -37,7 +29,21 @@ th {
     padding-top:5px ;
     padding-bottom: 5px;
 }
-
+.delete-button{
+    background-color: rgb(48, 185, 231);
+    justify-content: center;
+    width:40%;
+    height:5%;
+    border-radius: 15%;
+    padding-top:5px ;
+    padding-bottom: 5px;
+}
+.delete-button:hover{
+    background-color: #ff0000;
+}
+.update-button:hover{
+    background-color: green;
+}
 .request {
     display: flex;
     justify-content: space-between;
@@ -45,13 +51,15 @@ th {
     align-items: center;
 
 }
-
 .btn a {
     background-color: rgb(48, 185, 231);
     text-decoration: none;
     padding: 10px;
-    color: white;
-
+    color: black;
+    border-radius: 8%;
+}
+.btn :hover{
+    background-color: green;
 }
 
 /* RequestId CSS */

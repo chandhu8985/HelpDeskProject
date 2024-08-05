@@ -32,16 +32,12 @@ export class NewrequestComponent {
   resolveddate!:Date
   isEditing: boolean = false;
  
- 
-  
   toggleEmailField(event: any) {
     this.isEmailEnabled = !event.target.checked
     // console.log(event.target.name,event.target.checked)
   }
   onCancelRequest(){
-
     this.router.navigate([`home/${this.email}`])
-
   }
 
   
@@ -66,6 +62,8 @@ export class NewrequestComponent {
        this.category=this.RequestDetails.category
        this.description=this.RequestDetails.description
        this.priority=this.RequestDetails.priority
+
+       
        this.comment=this.RequestDetails.comment
        this.status=this.RequestDetails.status
        this.resolvedby=this.RequestDetails.resolved_by
@@ -100,8 +98,12 @@ export class NewrequestComponent {
   }
   
   onSubmit(form:any){
+    const generateId = () => {
+      return String(Math.floor(100000 + Math.random() * 900000)); // Generates a 6-digit number as a string
+    };
+  
   let data={
-    id: Math.round(Math.random() * 1000).toString(),
+    id: generateId(),
       title: this.title,
       category: this.category,
       description: this.description,

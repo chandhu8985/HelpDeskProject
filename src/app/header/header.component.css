@@ -27,7 +27,7 @@ header{
     width:60px;
     height:60px;
     padding-top:9px;
-    padding-right: 20px;
+    padding-right: 30px;
 }
 .options {
     display: none;
@@ -40,49 +40,44 @@ header{
     padding: 20px;
     z-index: 1;
 }
-
-.btn-control {
-    display: block;
-    width: 20%;
-    height:20px;
-    padding: 20px;     
-    margin: 5px 0;         
-    text-decoration: none;  
-    color: #007bff;         
-    background-color: #ffffff; 
-    border: 1px solid #007bff; 
-    border-radius: 4px;    
-    transition: background-color 0.3s, color 0.3s; 
+.btn-anchor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-.logout-btn-control {
-    padding: 10px 20px;      /* Same padding as links */
-    margin-top: 10px;        /* Margin above the logout button */
-    background-color: #dc3545; /* Red background for logout button */
-    color: #ffffff;          /* White text color */
-    border: none;            /* Remove border */
-    border-radius: 4px;     /* Slightly rounded corners */
+ 
+.btn-control {
+    padding: 10px 20px;      
+    margin-top: 10px;               
+    border: none;           
+    border-radius: 4px; 
+    background-color: #007bff;   
     cursor: pointer;         /* Pointer cursor on hover */
     font-weight: bold;       /* Bold text */
-    transition: background-color 0.3s; /* Smooth transition for hover effect */
+    transition: background-color 0.3s; 
+}
+.btn-control a:hover {
+    background-color: #6c3ae2; 
+}
+.logout-btn-control {
+    padding: 10px 20px;      
+    margin-top: 10px;        
+    background-color:rgb(48, 185, 231); 
+    color: black;         
+    border-radius: 4px;    
+    cursor: pointer;         
+    font-weight: bold;      
+    transition: background-color 0.3s; 
 }
 .logout-btn-control:hover {
     background-color: #c82333; /* Darker red on hover */
-}
-.options .btn-control:hover{
-    background-color: #f0f0f0;
 }
 
 .user-icon:hover .options {
     display: block;
 } 
-.options a {
-    text-decoration: none;
-    color: #333;
-    text-align: center;
-    background-color:rgb(48, 185, 231);
-    
+.btn-control:hover{
+    background-color: rgb(221, 236, 192);
 }
-.options a:hover {
-    background-color: #f0f0f0;
-}
+
 

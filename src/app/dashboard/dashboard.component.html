@@ -1,7 +1,7 @@
 <div>
    <div class="request">
       <h2>All Requests </h2>
-      <div class="btn">
+      <div class="btn" *ngIf="singleuserDetails.role === 'user'">
          <a routerLink="newrequest">New Request</a>
       </div>
    </div>
@@ -34,8 +34,8 @@
             <td> {{request.resolved_by}}</td>
             <td>{{request.resolved_date}}</td>
             <td class="buttons">
-               <button class="button" (click)="onEditRequest(request,'Edit')">Edit</button>
-                <button class="button" (click)="onDeleteRequest(request.id)" type="button">Delete</button> 
+               <button class=" update-button" (click)="onEditRequest(request,'Edit')">Edit</button>
+               <button class="delete-button" (click)="onDeleteRequest(request.id)" type="button">Delete</button>
             </td>
          </tr>
       </tbody>
@@ -51,39 +51,47 @@
    </div>
    <table>
       <tbody>
-         <tr>
-            <tr>
-               <th>Title:</th>
-               <td>{{Requestdetails?.title}}</td>
-             </tr>
          
+         <tr>
+            <th>Title:</th>
+            <td>{{Requestdetails?.title}}</td>
+         </tr>
+
          <tr>
             <th>Description:</th>
             <td>{{Requestdetails?.description}}</td>
          </tr>
+
          <tr>
             <th>Status:</th>
             <td>{{Requestdetails?.status}}</td>
          </tr>
+
          <tr>
             <th>Created_by:</th>
             <td>{{Requestdetails?.created_by}}</td>
          </tr>
-         <th>Created_date:</th>
-         <td>{{Requestdetails?.created_date}}</td>
+
          <tr>
-            <th>resolved_by:</th>
+            <th>Created_date:</th>
+            <td>{{Requestdetails?.created_date}}</td>
+         </tr>
+
+         <tr>
+            <th>Resolved_by:</th>
             <td>{{Requestdetails?.resolved_by}}</td>
          </tr>
+
          <tr>
-            <th>resolved_date:</th>
+            <th>Resolved_date:</th>
             <td>{{Requestdetails?.resolved_date}}</td>
          </tr>
+
          <tr>
-            <th>comment:</th>
+            <th>Comment:</th>
             <td>{{Requestdetails?.comment}}</td>
          </tr>
-         <tr>
+         
       </tbody>
    </table>
 </div>

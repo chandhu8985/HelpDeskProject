@@ -1,0 +1,214 @@
+<div class="form-container" *ngIf="role==='user'">
+    <h1><b>New Request</b></h1>
+    <form #RequestForm="ngForm" (ngSubmit)="onSubmit(RequestForm)" ngForm>
+        <div class="left">
+
+            <!-- When Admin/user Click the Edit Button Shows Request Id in Disabled mode and all request details -->
+
+            <div class="form-row" *ngIf="clicktype==='Edit'">
+                <label for="request-id">Request ID:</label>
+                <div>
+                    <input type="text" name="request-id" [value]="RequestDetails?.id" disabled>
+                </div>
+            </div>
+            <!-- When User raise a New Request   -->
+            <div class="form-row" *ngIf="clicktype!=='Edit'">
+                <label for="title">Title:</label>
+                <div>
+                    <input type="text" id="title" name="title" [(ngModel)]="title" ngModel required>
+                    <div class="error-message"
+                        *ngIf="RequestForm.submitted&&RequestForm.form.controls[' title']?.hasError('required')">
+                        please fill title field
+                    </div>
+                </div>
+            </div>
+            <!-- category -->
+            <div class="form-row">
+                <label for="category">Category:</label>
+                <div>
+                    <select name="category" id="category" [(ngModel)]="category" ngModel required>
+                        <option value="select">--Select--</option>
+                        <option value="Software">Software</option>
+                        <option value="Hardware">Hardware</option>
+                        <option value="Network">Network</option>
+                    </select>
+                    <div class="error-message"
+                        *ngIf="RequestForm.submitted&&RequestForm.form.controls['category']?.hasError('required')">
+                        please fill Category
+                        field </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <label for="description">Description:</label>
+                <div>
+                    <textarea id="description" name="description" [(ngModel)]="description" ngModel
+                        required> </textarea>
+                    <div class="error-message"
+                        *ngIf="RequestForm.submitted&&RequestForm.form.controls['description']?.hasError('required')">
+                        Please fill the description field
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Title -->
+
+        <div class="right">
+            <div class="form-row" *ngIf="clicktype==='Edit'">
+                <label for="title">Title:</label>
+                <div>
+                    <input type="text" id="title" name="title" [(ngModel)]="title" ngModel required>
+                    <div class="error-message"
+                        *ngIf="RequestForm.submitted&&RequestForm.form.controls[' title']?.hasError('required')">
+                        please fill title field
+                    </div>
+                </div>
+            </div>
+
+            <!-- priority  -->
+
+            <div class="form-row">
+                <label for="priority">Priority:</label>
+                <div>
+                    <select id="priority" name="priority" [(ngModel)]="priority" ngModel required>
+                        <option value="">Select priority</option>
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                    <div class="error-message"
+                        *ngIf="RequestForm.submitted&&RequestForm.form.controls['priority']?.hasError('required')">
+                        Please fill the Priority field
+                    </div>
+                </div>
+            </div>
+
+            <!-- email -->
+
+            <div class="form-row">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" [(ngModel)]="email" ngModel disabled
+                    [disabled]="isEmailEnabled" required>
+                <div class="error-message"
+                    *ngIf="RequestForm.submitted&&RequestForm.form.controls['email']?.hasError('required')">
+                    Please fill the Email field
+                </div>
+            </div>
+
+            <!-- on  behalf of  -->
+
+            <div class="form-row1">
+                <input type="checkbox" id="onbehalfof" name="onbehalfof" (change)="toggleEmailField($event)"><span>On
+                    Behalf Of</span>
+            </div>
+
+            <!-- submit button  -->
+
+            <div class="button" *ngIf="clicktype!=='Edit'">
+                <button>Submit</button>
+            </div>
+
+            <!-- update and cancel buttons -->
+
+            <div class="form-row" *ngIf="clicktype === 'Edit'">
+                <div class="updaterequestbtn">
+                    <button class="btn-update" type="button" (click)="onupdateRequest()">Update</button>
+                    <button class="btn-cancel" type="button" (click)="onCancelRequest()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<!-- when admin click the edit button  it display the form-->
+
+<div class="form-container"  *ngIf="role==='admin'">
+               <h2><b>Update Request</b></h2>
+    <form >
+        <div class="left">
+            <!-- When Admin/user Click the Edit Button Shows Request Id in Disabled mode and all request details -->
+            <div class="form-row"  *ngIf="clicktype==='Edit'">
+                <label for="request-id">Request ID:</label>
+                <input type="text" name="request-id"  [value]="RequestDetails?.id" disabled>
+            </div>
+            <!-- When User raise a New Request   -->
+            <div class="form-row" *ngIf="clicktype==='Edit'">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title"  [value]="RequestDetails?.title" disabled>
+
+            </div>
+            <!-- priority  -->
+
+            <div class="form-row">
+                <label for="priority">Priority:</label>
+                <div>
+                    <select id="priority" name="priority"  [value]="RequestDetails?.priority" disabled>
+                        <option value="">Select priority</option>
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <label for="status">Status:</label>
+                <select id="status" name="status" *ngIf="clicktype==='Edit'" [value]="RequestDetails?.Status">
+                    <option value="">Select Status</option>
+                    <option value="low">In Progress</option>
+                    <option value="medium">Cancelled</option>
+                    <option value="high">Completed</option>
+                </select>
+            </div>
+    
+            <div class="form-row" *ngIf="clicktype==='Edit'">
+                <label for="resolvedBy">Resolved By:</label>
+                <input type="text" id="resolvedBy" [value]="RequestDetails?.resolvedBy">
+            </div>
+        </div>
+        <div class="right">
+           
+            <div class="form-row">
+                <label for="category">Category:</label>
+                <div>
+                    <select name="category" id="category"  [value]="RequestDetails?.category" disabled>
+                        <option value="select">--Select--</option>
+                        <option value="Software">Software</option>
+                        <option value="Hardware">Hardware</option>
+                        <option value="Network">Network</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <label for="description">Description:</label>
+                <div>
+                    <textarea id="description" name="description" [value]="RequestDetails?.description" disabled> </textarea>
+                    
+                </div>
+            </div>
+
+            <!-- email -->
+
+            <div class="form-row">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" [(ngModel)]="email" ngModel disabled
+                    [disabled]="isEmailEnabled" >
+            </div>
+            <div class="form-row" *ngIf="clicktype==='Edit'">
+                <label for="comment">Comment:</label>
+                <textarea id="comment" rows="2" cols="2"  style="height: 20px;" [(ngModel)]="comment" ngModel  [value]="RequestDetails?.comment"></textarea>
+            </div>
+            <div class="form-row" *ngIf="clicktype==='Edit'">
+                <label for="resolvedDate">Resolved Date:</label>
+                <input type="date" id="resolvedDate"  [value]="RequestDetails?.resolvedDate">
+            </div>
+            <div class="form-row" *ngIf="clicktype === 'Edit'">
+                <div class="updaterequestbtn">
+                    <button class="btn-update" type="button" (click)="onupdateRequest()">Update</button>
+                    <button class="btn-cancel" type="button" (click)="onCancelRequest()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

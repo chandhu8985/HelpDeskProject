@@ -1,0 +1,14 @@
+footer{
+    background-color: black;
+    color:gold;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    padding: 1 rem;
+bottom: 0;
+
+}
+.footer-content{
+    max-width: 1200px;
+    margin: auto;
+}

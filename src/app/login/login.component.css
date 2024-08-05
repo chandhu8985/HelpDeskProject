@@ -1,0 +1,39 @@
+
+.LoginComponent{
+    display:flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+    background:white;
+    height: 98vh;
+    width:100%;
+    font-size: 15px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-style:bold;
+}
+.size{
+    width: 90%;
+    border-radius: 5px;
+    width:90%;
+    height: 3vh;
+    
+}
+#bgcolor{
+    color:white;
+    background-color: rgb(110, 110, 192);
+    border-radius: 5px;
+    width: 93%;
+    height:4vh;
+}
+.error{
+    color: red;
+}
+.wrapper{
+    width: 500%;
+    height:30vh;
+}
+.box{
+    background-color:rgb(55, 165, 209);
+    display: flex;
+    width: 30%;
+}

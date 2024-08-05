@@ -1,0 +1,88 @@
+
+header{
+    display: flex;
+    background-color:rgb(48, 185, 231);
+    color:black; 
+    justify-content: space-between;
+
+}
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+    
+}
+
+.align{
+    align-content:center ;
+    justify-content: center;
+}
+.user-icon {
+    position: relative;
+    display: inline-block;
+    
+}
+.user-icon img{
+    width:60px;
+    height:60px;
+    padding-top:9px;
+    padding-right: 20px;
+}
+.options {
+    display: none;
+    align-items: center;
+    position: absolute;
+    background-color: whitesmoke;
+    left: 0;
+    border: 1px solid black;
+    border-radius: 15%;
+    padding: 20px;
+    z-index: 1;
+}
+
+.btn-control {
+    display: block;
+    width: 20%;
+    height:20px;
+    padding: 20px;     
+    margin: 5px 0;         
+    text-decoration: none;  
+    color: #007bff;         
+    background-color: #ffffff; 
+    border: 1px solid #007bff; 
+    border-radius: 4px;    
+    transition: background-color 0.3s, color 0.3s; 
+}
+.logout-btn-control {
+    padding: 10px 20px;      /* Same padding as links */
+    margin-top: 10px;        /* Margin above the logout button */
+    background-color: #dc3545; /* Red background for logout button */
+    color: #ffffff;          /* White text color */
+    border: none;            /* Remove border */
+    border-radius: 4px;     /* Slightly rounded corners */
+    cursor: pointer;         /* Pointer cursor on hover */
+    font-weight: bold;       /* Bold text */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+.logout-btn-control:hover {
+    background-color: #c82333; /* Darker red on hover */
+}
+.options .btn-control:hover{
+    background-color: #f0f0f0;
+}
+
+.user-icon:hover .options {
+    display: block;
+} 
+.options a {
+    text-decoration: none;
+    color: #333;
+    text-align: center;
+    background-color:rgb(48, 185, 231);
+    
+}
+.options a:hover {
+    background-color: #f0f0f0;
+}
+

@@ -1,0 +1,176 @@
+
+ .form-container {
+   width: 50%;
+   height: 400px;
+   margin-top: 120px;
+   margin-left: 400px;
+   padding: 20px;
+   border: 1px solid #ccc;
+   border-radius: 8px;
+   background-color: #f9f9f9;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+ }
+
+ .form-container h1 {
+   margin-top: 0;
+   text-align: center;
+   margin-bottom: 20px;
+ }
+
+ form {
+   display: flex;
+   flex-wrap: wrap;
+   margin-top: 50px;
+ }
+
+ .left,
+ .right {
+   flex: 1;
+   padding: 0 10px;
+   box-sizing: border-box;
+ }
+
+
+ .form-row {
+    margin-top: 10px;
+   display: flex;
+   align-items: center;
+   margin-bottom: 15px; 
+   
+ }
+
+ .form-row label {
+   flex: 0 0 150px;
+   margin-right: 10px;
+   font-weight: bold;
+ }
+
+
+ .form-row input[type="text"],
+ .form-row input[type="email"],
+ .form-row div select,
+ .form-row textarea {
+   
+  min-width: 200px;
+   padding: 8px;
+   font-size: 14px;
+   border: 1px solid #ccc;
+   border-radius: 4px;
+   box-sizing: border-box;
+ }
+ 
+ #title,
+ #category,
+ #description,
+ #status,
+ #email {
+   height: 30px;
+ 
+ }
+
+ .form-row #category {
+   font-size: 12px;
+ }
+
+ .form-row textarea {
+   height: 100px;
+   resize: vertical;
+ }
+
+ .form-row1 {
+   margin-left: 16px;
+ }
+
+ .form-row1 input[type="checkbox"] {
+   margin-left: 16px;
+   vertical-align: middle;
+ }
+
+
+ .button {
+   text-align: center;
+   margin-top: 10px;
+   margin-left: 15px;
+   
+ }
+
+ .button button {
+   padding: 10px 20px;
+   font-size: 16px;
+   background-color:rgb(48, 185, 231);
+   color: black;
+   border: none;
+   cursor: pointer;
+   margin-left: 150px;
+   margin-top: 20px;
+   border-radius: 20%;
+   
+ }
+
+ .button button:hover {
+   background-color: #45a049;
+ }
+
+ .right .form-row1 {
+   margin-left: 150px;
+ }
+
+ .form-row textarea {
+   flex: 1;
+   padding: 8px;
+   font-size: 14px;
+   border: 1px solid #ccc;
+   border-radius: 4px;
+   box-sizing: border-box;
+   resize: vertical;
+   min-height: 50px;
+ }
+
+ .error-message {
+   color: red;
+   font-size: 8px;
+ }
+ /* Style for the form row container */
+.form-row {
+  margin: 20px 0; /* Add some space above and below */
+}
+
+/* Style for the button container */
+.updaterequestbtn {
+  display: flex;
+  justify-content: flex-end; /* Align buttons to the right */
+  gap: 10px; 
+}
+
+/*  button style */
+.updaterequestbtn button {
+  padding: 10px 20px; 
+  border: none; 
+  border-radius: 4px; 
+  font-size: 16px; 
+  cursor: pointer; 
+}
+
+/* Style for the Update button */
+.btn-update {
+  background-color:rgb(48, 185, 231);
+  color: white; 
+  transition: background-color 0.3s;
+}
+
+.btn-update:hover {
+  background-color: #45a049; 
+}
+
+/* Style for the Cancel button */
+.btn-cancel {
+  background-color: rgb(48, 185, 231);
+  color: white; 
+  transition: background-color 0.3s; 
+}
+
+.btn-cancel:hover {
+  background-color: #e53935; 
+}
+/* resolved date calendar icon */
+

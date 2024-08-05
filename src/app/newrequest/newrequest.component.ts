@@ -1,0 +1,129 @@
+import { Component } from '@angular/core';
+import { DataService } from '../data.service';
+import { Router ,ActivatedRoute} from '@angular/router';
+
+
+
+@Component({
+  selector: 'app-newrequest',
+  templateUrl: './newrequest.component.html',
+  styleUrl: './newrequest.component.css'
+})
+export class NewrequestComponent {
+  constructor(private ds:DataService,private router:Router,private ac:ActivatedRoute) { }
+  clicktype!:string
+  ngForm!:any
+  title!:string
+  category!:string
+  description!:string
+  priority!:string
+  requestid!:number
+  email:string=''
+  RequestDetails!:any
+  request!:any
+  fetchingRequests:any
+  status!:any
+  isEmailEnabled: boolean = true;
+  updateRequest:any
+  CancelRequest:any
+  role!: string;
+  resolvedby!:string
+  comment!:string
+  resolveddate!:Date
+  isEditing: boolean = false;
+ 
+ 
+  
+  toggleEmailField(event: any) {
+    this.isEmailEnabled = !event.target.checked
+    // console.log(event.target.name,event.target.checked)
+  }
+  onCancelRequest(){
+
+    this.router.navigate([`home/${this.email}`])
+
+  }
+
+  
+  ngOnInit(): void {
+    this.email=this.ds.getuseremail()
+    this.requestid=this.ac.snapshot.params['id']
+   const role=sessionStorage.getItem('role')
+   if(role){
+    this.role=role
+   }
+   console.log(this.role,'resss')
+    if(this.requestid){
+      let clicktype=sessionStorage.getItem('type')
+      if(clicktype){
+        this.clicktype=JSON.parse(clicktype)
+      }
+      this.ds.getrequests().subscribe((res)=>{
+        this.fetchingRequests=res
+       this.RequestDetails=this.fetchingRequests.find((res:any)=>res.id===this.requestid)
+       this.email=this.RequestDetails.email
+       this.title=this.RequestDetails.title
+       this.category=this.RequestDetails.category
+       this.description=this.RequestDetails.description
+       this.priority=this.RequestDetails.priority
+       this.comment=this.RequestDetails.comment
+       this.status=this.RequestDetails.status
+       this.resolvedby=this.RequestDetails.resolved_by
+       this.resolveddate=this.RequestDetails.resolved_date
+       
+     })
+    }
+  }
+  onupdateRequest(){
+
+    let requestdata={
+      ...this.RequestDetails,
+      title:this.title,
+      category:this.category,
+      description:this.description,
+      priority:this.priority,
+
+      email:this.email,
+      status:this.status,
+      resolved_by:this.resolvedby,
+      resolved_date:this.resolveddate,
+      comment:this.comment
+
+    }
+  this.ds.onEditRequest(requestdata,this.requestid).subscribe(
+    (response:any )=> {
+    this.router.navigate([`home/${this.ds.getuseremail()}`])
+    console.log('Request updated successfully', response);
+   console.log(alert(`Your Request updated Successfully! \n Your Request Id is ${this.RequestDetails.id}`))
+  
+}) 
+  }
+  
+  onSubmit(form:any){
+  let data={
+    id: Math.round(Math.random() * 1000).toString(),
+      title: this.title,
+      category: this.category,
+      description: this.description,
+      priority: this.priority,
+      email: this.email,
+      status:'open',
+      comment: '--',
+      created_by: this.email,
+      created_date: new Date().toLocaleDateString(),
+      resolved_by: '',
+      resolved_date: ''
+  }
+  console.log(data)
+  if(form.valid)
+  {
+    this.ds.postData(data).subscribe((res)=> alert(`Your Request Added Successfully! \n Your Request Id is ${data.id}`))
+    this.router.navigate([`home/${this.email}`])
+  }
+  else {
+    alert('Fill the Required Fields')
+  }
+
+}
+}
+

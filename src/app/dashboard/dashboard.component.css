@@ -1,0 +1,141 @@
+/* dashboard css */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1 px solid #dddd;
+    text-align: left;
+    padding: 4px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.button button:hover {
+    background-color: #45a049;
+}
+.buttons button:hover{
+    background-color: #ff0000;
+}
+
+
+.button{
+    background-color: rgb(48, 185, 231);
+    justify-content: center;
+    width:40%;
+    height:5%;
+    border-radius: 15%;
+    padding-top:5px ;
+    padding-bottom: 5px;
+}
+
+.request {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    align-items: center;
+
+}
+
+.btn a {
+    background-color: rgb(48, 185, 231);
+    text-decoration: none;
+    padding: 10px;
+    color: white;
+
+}
+
+/* RequestId CSS */
+a {
+    color: #007bff;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+a:hover {
+    color: red;
+    text-decoration: underline;
+}
+
+/*pop up  css*/
+
+/* Pop-up container */
+.pop-up {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    max-width: 90%;
+    padding: 20px;
+    background-color: rgb(225, 247, 247); 
+    border: 1px solid #ddd; 
+    border-radius: 6px; /* Rounded corner */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+/* Show the pop-up */
+.popup-show {
+    display: block;
+}
+
+/* Hide the pop-up */
+.popup-hide {
+    display: none;
+}
+
+/* Header styling */
+.header {
+    text-align: center;
+    font-size: 1.5em; 
+    margin-bottom: 20px; 
+    font-weight: bold;
+}
+
+/* Close button styling */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+}
+
+.close-btn button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #ff0000; 
+}
+
+.close-btn button:hover {
+    color: #000000; 
+}
+
+/* Table styling */
+.pop-up table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.pop-up th,
+.pop-up td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.pop-up th {
+    font-weight: bold; /* Bold font for headers */
+    background-color: lavender; 
+}

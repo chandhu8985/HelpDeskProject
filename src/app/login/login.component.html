@@ -1,0 +1,18 @@
+<div class="LoginComponent">
+  <div class="box">
+  <div >
+    <img src="login image.png" width="220px" height="250px" >
+  </div>
+  <div class="wrapper">
+    <form #loginForm="ngForm" (ngSubmit)="login()" ngForm>
+      <h2> Login to your Account </h2>
+        Email<br> <input type="text" name="email" placeholder="mail@abc.com" class="size" ngModel  required [(ngModel)]="email">
+        <span class="error" *ngIf="loginForm.submitted &&loginForm.form.controls['email'].hasError('required') ">Email is required</span><br><br>
+        Password <br><input type="password" name="pwd" placeholder="*************" class="size" ngModel required minlength="7" [(ngModel)]="password"><br>
+        <span class="error" *ngIf="loginForm.submitted&&loginForm.form.controls['pwd']?.touched &&loginForm.controls['pwd'].hasError('required')">password  is required</span><br>
+        <span class="error" *ngIf="loginForm.submitted&&loginForm.form.controls['pwd']?.touched &&loginForm.controls['pwd'].hasError('minlength')">minimum 6 characters</span>
+       <button id="bgcolor">Login</button> 
+    </form>
+  </div>
+  </div>
+</div> 

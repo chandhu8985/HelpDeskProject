@@ -1,0 +1,11 @@
+
+.faq-question{
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+}
+.faq-answer{
+    margin-top: 5px;
+    color: rgb(19, 14, 14);
+
+} 

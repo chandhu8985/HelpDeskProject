@@ -156,7 +156,7 @@
             <div class="form-row" *ngIf="clicktype==='Edit'">
                 <label for="status">Status:</label>
                 <div>
-                    <select id="status" name="status"  [value]="RequestDetails?.Status">
+                    <select id="status" name="status" [value]="RequestDetails?.status">
                         <option value="low">In Progress</option>
                         <option value="high">Completed</option>
                     </select>
@@ -211,7 +211,7 @@
 
             <div class="form-row" *ngIf="clicktype==='Edit'">
                 <label for="resolvedDate">Resolved Date:</label>
-                <input type="date" id="resolvedDate" [(ngModel)]="resolveddate" name="resolvedDate" type="date" ngModel>
+                <input type="date" id="resolvedDate" [(ngModel)]="resolveddate" name="resolvedDate" ngModel>
             </div>
             
 

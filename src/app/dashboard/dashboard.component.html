@@ -23,7 +23,7 @@
       </thead>
       <tbody>
          <tr *ngFor="let request of allrequestDetails">
-            <td><a class="request-id" (click)="onRequestClick(request.id)">{{request.id}}</a></td>
+            <td><a class="request-id" (click)="onRequestClick(request.id,'viewrequest')">{{request.id}}</a></td>
             <td> {{request.title}}</td>
             <td> {{request.description}}</td>
             <td> {{request.status}}</td>

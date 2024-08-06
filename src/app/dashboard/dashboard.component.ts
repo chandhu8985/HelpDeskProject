@@ -24,6 +24,7 @@ export class DashboardComponent {
   alluserDetails!: any
   allrequestDetails!: any
   singleuserDetails!: any
+  
 
   ngOnInit(): void {
     this.useremail = this.router.snapshot.params['id']
@@ -58,15 +59,13 @@ export class DashboardComponent {
   }
    //When click the ticketid  it shows the request details 
 
-  onRequestClick(requestId: number) {
+  onRequestClick(requestId: number,type:string) {
     this.ds.getrequests().subscribe(res => {
       this.Requestdetails = res
       this.Requestdetails = this.Requestdetails.find((request: any) => request.id === requestId);
+      
       console.log(this.Requestdetails)
-    },
-      (error) => {
-        console.error('Error fetching request details', error);
-      }
+    }
     )
     this.isVisible = true;
   }

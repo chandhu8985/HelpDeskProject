@@ -104,23 +104,23 @@ export class NewrequestComponent {
   
   let data={
     id: generateId(),
-      title: this.title,
-      category: this.category,
-      description: this.description,
-      priority: this.priority,
-      email: this.email,
-      status:'open',
-      comment: '--',
-      created_by: this.email,
-      created_date: new Date().toLocaleDateString(),
-      resolved_by: '',
-      resolved_date: ''
+      'title': this.title,
+      'category': this.category,
+      'description': this.description,
+      'priority': this.priority,
+      'email': this.email,
+      'status':'open',
+      'comment': this.comment,
+      'created_by': this.email,
+      'created_date': new Date().toLocaleString(),
+      'resolved_by': this.resolvedby,
+      'resolved_date': this.resolveddate
   }
   console.log(data)
   if(form.valid)
   {
     this.ds.postData(data).subscribe((res)=> alert(`Your Request Added Successfully! \n Your Request Id is ${data.id}`))
-    this.router.navigate([`home/${this.email}`])
+    this.router.navigate([`home/${this.ds.getuseremail()}`])
   }
   else {
     alert('Fill the Required Fields')

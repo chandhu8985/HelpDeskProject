@@ -29,10 +29,9 @@ export class DashboardComponent {
   ngOnInit(): void {
     this.useremail = this.router.snapshot.params['id']
     console.log(this.useremail)
-    // this.ds.setuseremail(this.useremail)
     this.ds.getrequests().subscribe(data => {
       this.requests = data
-      this.filteredRequests = this.requests.filter((request: any) => request.email === this.useremail);
+      this.filteredRequests = this.requests.filter((request: any) => request.email === this.useremail)
       console.log(this.filteredRequests, 'requests')
 
       //loading user data
@@ -40,7 +39,7 @@ export class DashboardComponent {
       this.ds.getData().subscribe(response => {
         this.alluserDetails = response
         console.log(this.alluserDetails, 'userdetails')
-        this.singleuserDetails = this.alluserDetails.find((user: any) => user.email === this.useremail);
+        this.singleuserDetails = this.alluserDetails.find((user: any) => user.email === this.useremail)
     
         console.log(this.singleuserDetails.role, 'res')
 
@@ -57,7 +56,7 @@ export class DashboardComponent {
     )
 
   }
-   //When click the ticketid  it shows the request details 
+   //When click the Requestid  it shows the request details 
 
   onRequestClick(requestId: number,type:string) {
     this.ds.getrequests().subscribe(res => {
@@ -72,7 +71,7 @@ export class DashboardComponent {
   hide() {
     this.isVisible = false;
   }
-  // when we click the edit button  shows the edit request details.
+  // When we click the Edit Button  shows the edit request details.
   onEditRequest(request: any, type: string) {
     this.ds.setclicktype(type)
     this.ds.onEditRequest(request, request.id).subscribe(
@@ -82,23 +81,22 @@ export class DashboardComponent {
 
       })
   }
-  //  when click the Delete Request ticket status  must be cancelled.
+  //  When click the Delete Button Request  status  must be cancelled.
   onDeleteRequest(id: number) {
-    const response = confirm(`are you sure want to delete?`)
+    const response = confirm(`Are you want to Sure Delete the Request?`)
     if (response) {
 
       this.Requestdetails = this.requests.find((request: any) => request.id === id);
       let requestdata = {
         ...this.Requestdetails,
 
-        status: 'cancelled'
+        status: 'Cancelled'
 
       }
       this.ds.onEditRequest(requestdata, id).subscribe(
         (response: any) => {
 
-          console.log('Request updated successfully', response);
-          console.log(alert(`Your Request updated Successfully! \n Your Request Id is ${id}`))
+          console.log(alert(`Your Request Deleted  Successfully! \n Your Request Id is ${id}`))
         })
 
     }

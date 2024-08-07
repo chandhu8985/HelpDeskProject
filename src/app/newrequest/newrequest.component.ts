@@ -91,7 +91,7 @@ export class NewrequestComponent {
   this.ds.onEditRequest(requestdata,this.requestid).subscribe(
     (response:any )=> {
     this.router.navigate([`home/${this.ds.getuseremail()}`])
-    console.log('Request updated successfully', response);
+    // console.log('Request updated successfully', response)
    console.log(alert(`Your Request updated Successfully! \n Your Request Id is ${this.RequestDetails.id}`))
   
 }) 
@@ -100,7 +100,7 @@ export class NewrequestComponent {
   onSubmit(form:any){
     const generateId = () => {
       return String(Math.floor(100000 + Math.random() * 900000)); // Generates a 6-digit number as a string
-    };
+    }
   
   let data={
     id: generateId(),

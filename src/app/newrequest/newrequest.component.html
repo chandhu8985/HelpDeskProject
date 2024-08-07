@@ -89,10 +89,7 @@
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" [(ngModel)]="email" ngModel disabled
                     [disabled]="isEmailEnabled" required>
-                <div class="error-message"
-                    *ngIf="RequestForm.submitted&&RequestForm.form.controls['email']?.hasError('required')">
-                    Please fill the Email field
-                </div>
+                
             </div>
 
             <!-- on  behalf of  -->
@@ -163,11 +160,6 @@
                 </div>
             </div>
 
-            <!-- <div class="form-row" *ngIf="clicktype==='Edit'">
-                <label for="resolvedBy">Resolved By:</label>
-                <input type="text" id="resolvedBy"  [value]="RequestDetails?.resolved_by" >
-            </div> -->
-
             <div class="form-row" *ngIf="clicktype==='Edit'">
                 <label for="resolvedBy">Resolved By:</label>
                 <input type="text" id="resolvedBy" [(ngModel)]="resolvedby" ngModel >
@@ -206,12 +198,12 @@
 
             <div class="form-row" *ngIf="clicktype==='Edit'">
                 <label for="comment">Comment:</label>
-                <textarea id="comment" rows="2" cols="2" style="height: 20px;" [(ngModel)]="comment" ngModel></textarea>
+                <textarea id="comment" rows="2" cols="2" style="height:20px;" [(ngModel)]="comment" ngModel></textarea>
             </div>
 
             <div class="form-row" *ngIf="clicktype==='Edit'">
                 <label for="resolvedDate">Resolved Date:</label>
-                <input type="date" id="resolvedDate" [(ngModel)]="resolveddate" name="resolvedDate" ngModel>
+                <input type="date" id="resolvedDate" name="resolvedDate" [(ngModel)]="resolveddate" ngModel>
             </div>
             
 

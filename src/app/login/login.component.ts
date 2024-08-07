@@ -22,7 +22,7 @@ export class LoginComponent {
     this.data.getData().subscribe((res) => this.loginData = res)
   }
   login() {
-
+  
     this.user = this.loginData.find((data: any) => data.email === this.email)
     console.log(this.email,this.password,this.user.email,this.user.password)
     if (this.email === this.user.email && this.password === this.user.password) {
@@ -31,7 +31,7 @@ export class LoginComponent {
       this.router.navigate(['home',this.email])
     }
     else{
-      alert('not valid')
+      alert('Invalid Credentials')
     }
   }
 

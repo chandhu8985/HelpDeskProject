@@ -20,13 +20,14 @@ export class DashboardComponent {
   filteredRequests: any;
   Requestdetails: any;
   updateRequest: any
-  isVisible!: boolean;
+  isVisible: boolean=false;
   alluserDetails!: any
   allrequestDetails!: any
   singleuserDetails!: any
   
 
   ngOnInit(): void {
+
     this.useremail = this.router.snapshot.params['id']
     console.log(this.useremail)
     this.ds.getrequests().subscribe(data => {
@@ -58,15 +59,21 @@ export class DashboardComponent {
   }
    //When click the Requestid  it shows the request details 
 
-  onRequestClick(requestId: number,type:string) {
+  onRequestClick(requests: any,type:string) {
+    this.ds.setclicktype(type)
     this.ds.getrequests().subscribe(res => {
       this.Requestdetails = res
-      this.Requestdetails = this.Requestdetails.find((request: any) => request.id === requestId);
-      
+      this.Requestdetails = this.Requestdetails.find((request: any) => request.id === requests.id);
       console.log(this.Requestdetails)
+      if(this.singleuserDetails.role==='user'){
+        this.isVisible = true;
+      }
+      else{
+        this.routers.navigate([`home/${this.useremail}/newrequest/${requests.id}`])
+      }
+     
     }
     )
-    this.isVisible = true;
   }
   hide() {
     this.isVisible = false;

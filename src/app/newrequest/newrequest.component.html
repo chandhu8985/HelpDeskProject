@@ -71,10 +71,10 @@
                 <label for="priority">Priority:</label>
                 <div>
                     <select id="priority" name="priority" [(ngModel)]="priority" ngModel required>
-                        <option value="">Select priority</option>
-                        <option value="low">Low</option>
-                        <option value="medium">Medium</option>
-                        <option value="high">High</option>
+                        <option value="label">Select priority</option>
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
                     </select>
                     <div class="error-message"
                         *ngIf="RequestForm.submitted&&RequestForm.form.controls['priority']?.hasError('required')">
@@ -118,20 +118,20 @@
 </div>
            <!---------------- when admin click the edit button  it display the form---------------------------------->
 
-<div class="admin-form-container" *ngIf="role==='admin'">
+<div class="admin-form-container" *ngIf="role==='admin'" >
     <h1><b>Update Request</b></h1>
     <form>
         <div class="left">
             <!-- When Admin/user Click the Edit Button Shows Request Id in Disabled mode and all request details -->
 
-            <div class="form-row" *ngIf="clicktype==='Edit'">
+            <div class="form-row">
                 <label for="request-id">Request ID:</label>
                 <input type="text" name="request-id" [value]="RequestDetails?.id" disabled>
             </div>
 
             <!-- When User raise a New Request   -->
 
-            <div class="form-row" *ngIf="clicktype==='Edit'">
+            <div class="form-row" >
                 <label for="title">Title:</label>
                 <input type="text" id="title" name="title" [value]="RequestDetails?.title" disabled>
 
@@ -142,27 +142,28 @@
                 <label for="priority">Priority:</label>
                 <div>
                     <select id="priority" name="priority" [value]="RequestDetails?.priority" disabled>
-                        <option value="">Select priority</option>
-                        <option value="low">Low</option>
-                        <option value="medium">Medium</option>
-                        <option value="high">High</option>
+                        <option value="label">Select priority</option>
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
                     </select>
                 </div>
             </div>
 
-            <div class="form-row" *ngIf="clicktype==='Edit'">
+            <div class="form-row">
                 <label for="status">Status:</label>
                 <div>
-                    <select id="status" name="status" [value]="RequestDetails?.status">
-                        <option value="low">In Progress</option>
-                        <option value="high">Completed</option>
+                    <select id="status" name="status"  [(ngModel)]="status" ngModel [disabled]="clicktype!=='Edit'">
+                        <option value="Open">Open</option>
+                        <option value="InProgress">In Progress</option>
+                        <option value="Completed">Completed</option>
                     </select>
                 </div>
             </div>
 
-            <div class="form-row" *ngIf="clicktype==='Edit'">
+            <div class="form-row">
                 <label for="resolvedBy">Resolved By:</label>
-                <input type="text" id="resolvedBy" [(ngModel)]="resolvedby" ngModel >
+                <input type="text" id="resolvedBy" [(ngModel)]="resolvedby" ngModel  name="resolvedby " [disabled]="clicktype!=='Edit'">
             </div>
         </div>
 
@@ -172,7 +173,7 @@
                 <label for="category">Category:</label>
                 <div>
                     <select name="category" id="category" [value]="RequestDetails?.category" disabled>
-                        <option value="select">--Select--</option>
+                        <option value="Select">--Select--</option>
                         <option value="Software">Software</option>
                         <option value="Hardware">Hardware</option>
                         <option value="Network">Network</option>
@@ -196,23 +197,24 @@
                     [disabled]="isEmailEnabled">
             </div>
 
-            <div class="form-row" *ngIf="clicktype==='Edit'">
+            <div class="form-row">
                 <label for="comment">Comment:</label>
-                <textarea id="comment" rows="2" cols="2" style="height:20px;" [(ngModel)]="comment" ngModel></textarea>
+                <textarea id="comment" rows="2" cols="2" style="height:20px;"  name="comment" [(ngModel)]="comment" ngModel [disabled]="clicktype!=='Edit'"></textarea>
             </div>
 
-            <div class="form-row" *ngIf="clicktype==='Edit'">
-                <label for="resolvedDate">Resolved Date:</label>
-                <input type="date" id="resolvedDate" name="resolvedDate" [(ngModel)]="resolveddate" ngModel>
+            <div class="form-row">
+                <label for="resolveddate">Resolved Date:</label>
+                <input type="date" id="resolveddate" name="resolveddate" [(ngModel)]="resolveddate" ngModel [disabled]="clicktype!=='Edit'" >{{clicktype}}
             </div>
             
 
-            <div class="form-row" *ngIf="clicktype === 'Edit'">
+            <div class="form-row" >
                 <div class="updaterequestbtn">
                     <button class="btn-update" type="button" (click)="onupdateRequest()">Update</button>
                     <button class="btn-cancel" type="button" (click)="onCancelRequest()">Cancel</button>
                 </div>
             </div>
+
         </div>
     </form>
 </div>
@@ -221,97 +223,7 @@
 
 
 
- <!-- -------------------When Admin click the RequestId It Displays the View Form------------------------------------->
+
 
  
- <!-- <div class="admin-form-container" *ngIf="role==='admin'">
-    <h1><b>Update Request</b></h1>
-    <form>
-        <div class="left">
-           
-
-            <div class="form-row" *ngIf="clicktype==='viewrequest'">
-                <label for="request-id">Request ID:</label>
-                <input type="text" name="request-id" [value]="RequestDetails?.id" disabled>
-            </div>
-
-            
-
-            <div class="form-row" *ngIf="clicktype==='viewrequest'">
-                <label for="title">Title:</label>
-                <input type="text" id="title" name="title" [value]="RequestDetails?.title" disabled>
-
-            </div>
-            
-
-            <div class="form-row">
-                <label for="priority">Priority:</label>
-                <div>
-                    <select id="priority" name="priority" [value]="RequestDetails?.priority" disabled>
-                        <option value="">Select priority</option>
-                        <option value="low">Low</option>
-                        <option value="medium">Medium</option>
-                        <option value="high">High</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-row" *ngIf="clicktype==='viewrequest'">
-                <label for="status">Status:</label>
-                <div>
-                    <select id="status" name="status"  [value]="RequestDetails?.Status" disabled>
-                        <option value="low">In Progress</option>
-                        <option value="high">Completed</option>
-                    </select>
-                </div>
-            </div>
-
-            
-
-            <div class="form-row" *ngIf="clicktype==='viewrequest'">
-                <label for="resolvedBy">Resolved By:</label>
-                <input type="text" id="resolvedBy" [value]="RequestDetails?.resolved_by" disabled >
-            </div>
-        </div>
-
-        <div class="right">
-
-            <div class="form-row" *ngIf="clicktype==='viewrequest'">
-                <label for="category">Category:</label>
-                <div>
-                    <select name="category" id="category" [value]="RequestDetails?.category" disabled>
-                        <option value="select">--Select--</option>
-                        <option value="Software">Software</option>
-                        <option value="Hardware">Hardware</option>
-                        <option value="Network">Network</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-row" *ngIf="clicktype==='viewrequest'">
-                <label for="description">Description:</label>
-                <div>
-                    <textarea id="description" name="description" [value]="RequestDetails?.description" disabled
-                        disabled> </textarea>
-                </div>
-            </div>
-
-            <div class="form-row" *ngIf="clicktype==='viewrequest'">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" [(ngModel)]="email" ngModel disabled
-                    [disabled]="isEmailEnabled">
-            </div>
-
-            <div class="form-row" *ngIf="clicktype==='viewrequest'">
-                <label for="comment">Comment:</label>
-                <textarea id="comment" rows="2" cols="2" style="height: 20px;"  [value]="RequestDetails?.comment" disabled></textarea>
-            </div>
-
-            <div class="form-row" *ngIf="clicktype==='viewrequest'">
-                <label for="resolvedDate">Resolved Date:</label>
-                <input type="date" id="resolvedDate"  [value]="RequestDetails?.resolved_date" disabled >
-            </div>
-            
-        </div>
-    </form>
-</div>  -->
+ 

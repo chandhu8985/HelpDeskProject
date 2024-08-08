@@ -12,24 +12,24 @@ import { Router ,ActivatedRoute} from '@angular/router';
 export class NewrequestComponent {
   constructor(private ds:DataService,private router:Router,private ac:ActivatedRoute) { }
   clicktype!:string
-  ngForm!:any
-  title!:string
-  category!:string
-  description!:string
-  priority!:string
-  requestid!:number
-  email:string=''
-  RequestDetails!:any
-  request!:any
-  fetchingRequests:any
-  status!:any
+  ngForm!:any;
+  title!:string;
+  category!:string;
+  description!:string;
+  priority!:string;
+  requestid!:number;
+  email:string='';
+  RequestDetails!:any;
+  request!:any;
+  fetchingRequests:any;
+  status!:any;
   isEmailEnabled: boolean = true;
-  updateRequest:any
-  CancelRequest:any
+  updateRequest:any;
+  CancelRequest:any;
   role!: string;
-  resolvedby!:string
-  comment!:string
-  resolveddate!:Date
+  resolvedby!:string;
+  comment!:string;
+  resolveddate!:Date;
   isEditing: boolean = false;
  
   toggleEmailField(event: any) {
@@ -37,7 +37,7 @@ export class NewrequestComponent {
     // console.log(event.target.name,event.target.checked)
   }
   onCancelRequest(){
-    this.router.navigate([`home/${this.email}`])
+    this.router.navigate([`home/${this.ds.getuseremail()}`])
   }
 
   
@@ -80,7 +80,6 @@ export class NewrequestComponent {
       category:this.category,
       description:this.description,
       priority:this.priority,
-
       email:this.email,
       status:this.status,
       resolved_by:this.resolvedby,
@@ -88,8 +87,10 @@ export class NewrequestComponent {
       comment:this.comment
 
     }
+    console.log(this.status,this.comment,this.resolvedby,this.resolveddate,'status','comment','resolvedby','resolveddate')
   this.ds.onEditRequest(requestdata,this.requestid).subscribe(
     (response:any )=> {
+      console.log(requestdata,'updated')
     this.router.navigate([`home/${this.ds.getuseremail()}`])
     // console.log('Request updated successfully', response)
    console.log(alert(`Your Request updated Successfully! \n Your Request Id is ${this.RequestDetails.id}`))
@@ -109,7 +110,7 @@ export class NewrequestComponent {
       'description': this.description,
       'priority': this.priority,
       'email': this.email,
-      'status':'open',
+      'status':'Open',
       'comment': this.comment,
       'created_by': this.email,
       'created_date': new Date().toLocaleString(),

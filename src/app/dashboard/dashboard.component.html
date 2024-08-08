@@ -23,7 +23,7 @@
       </thead>
       <tbody>
          <tr *ngFor="let request of allrequestDetails">
-            <td><a class="request-id" (click)="onRequestClick(request.id,'viewrequest')">{{request.id}}</a></td>
+            <td><a class="request-id" (click)="onRequestClick(request,'view')">{{request.id}}</a></td>
             <td> {{request.title}}</td>
             <td> {{request.description}}</td>
             <td> {{request.status}}</td>
@@ -34,8 +34,8 @@
             <td> {{request.resolved_by}}</td>
             <td>{{request.resolved_date}}</td>
             <td class="buttons">
-               <button class=" update-button" (click)="onEditRequest(request,'Edit')">Edit</button>
-               <button class="delete-button" (click)="onDeleteRequest(request.id)" type="button">Delete</button>
+               <button class=" update-button" (click)="onEditRequest(request,'Edit')" *ngIf="request.status==='InProgress'||request.status==='Open'">Edit</button>
+               <button class="delete-button" (click)="onDeleteRequest(request.id)" type="button" *ngIf="request.status==='InProgress'||request.status==='Open'">Delete</button>
             </td>
          </tr>
       </tbody>
@@ -44,7 +44,7 @@
 
 <!-- PopUp code -->
 
-<div class="pop-up" [ngClass]="isVisible?'popup-show':'popup-hide'">
+<div class="pop-up" *ngIf="isVisible">
    <div class="header">Request Details</div>
    <div class="close-btn">
       <button (click)="hide()">&#x2716;</button>

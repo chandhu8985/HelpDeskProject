@@ -79,6 +79,9 @@ tr:hover {
 .btn :hover{
     background-color: green;
 }
+.btn a:hover{
+    background-color:rgb(221, 236, 192);
+}
 
 /* RequestId CSS */
 a {
@@ -90,6 +93,7 @@ a {
 a:hover {
     color: red;
     text-decoration: underline;
+    font-weight: bold;
 }
 
 /*pop up  css*/
@@ -105,21 +109,10 @@ a:hover {
     padding: 20px;
     background-color: rgb(225, 247, 247); 
     border: 1px solid #ddd; 
-    border-radius: 6px; /* Rounded corner */
+    border-radius: 6px; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 1000;
 }
-
-/* Show the pop-up */
-.popup-show {
-    display: block;
-}
-
-/* Hide the pop-up */
-.popup-hide {
-    display: none;
-}
-
 /* Header styling */
 .header {
     text-align: center;

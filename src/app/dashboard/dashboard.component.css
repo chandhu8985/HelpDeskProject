@@ -9,9 +9,13 @@ table {
 
 th,
 td {
-    border: 1 px solid #dddd;
+    
     text-align: left;
     padding: 4px;
+    box-sizing: border-box; /* Include padding and border in the element’s total width and height */
+}
+tr {
+    height: 40px; /* Fixed height */
 }
 
 th {
@@ -42,19 +46,17 @@ tr:hover {
     background-color: rgb(48, 185, 231);
     justify-content: center;
     width:40%;
-    height:5%;
+    height:28px;
     border-radius: 15%;
-    padding-top:5px ;
-    padding-bottom: 5px;
+  
 }
 .delete-button{
     background-color: rgb(48, 185, 231);
     justify-content: center;
     width:40%;
-    height:5%;
+    height:28px;
     border-radius: 15%;
-    padding-top:5px ;
-    padding-bottom: 5px;
+    
 }
 .delete-button:hover{
     background-color: #ff0000;

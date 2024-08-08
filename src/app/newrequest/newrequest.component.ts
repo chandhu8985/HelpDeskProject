@@ -31,6 +31,8 @@ export class NewrequestComponent {
   comment!:string;
   resolveddate!:Date;
   isEditing: boolean = false;
+  isUpdateVisible: boolean = true; // Control visibility of update button
+  isCancelVisible: boolean = true; // Control visibility of cancel button
  
   toggleEmailField(event: any) {
     this.isEmailEnabled = !event.target.checked

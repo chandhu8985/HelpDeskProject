@@ -89,7 +89,7 @@
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" [(ngModel)]="email" ngModel disabled
                     [disabled]="isEmailEnabled" required>
-                
+
             </div>
 
             <!-- on  behalf of  -->
@@ -116,10 +116,16 @@
         </div>
     </form>
 </div>
-           <!---------------- when admin click the edit button  it display the form---------------------------------->
+<!---------------- when admin click the edit button  it display the form---------------------------------->
 
-<div class="admin-form-container" *ngIf="role==='admin'" >
-    <h1><b>Update Request</b></h1>
+<div class="admin-form-container" *ngIf="role==='admin'">
+    <div *ngIf="clicktype === 'Edit'">
+        <h1><b>Update Request</b></h1>
+    </div>
+
+    <div *ngIf="clicktype !== 'Edit'">
+        <h1><b>View Request</b></h1>
+    </div>
     <form>
         <div class="left">
             <!-- When Admin/user Click the Edit Button Shows Request Id in Disabled mode and all request details -->
@@ -131,7 +137,7 @@
 
             <!-- When User raise a New Request   -->
 
-            <div class="form-row" >
+            <div class="form-row">
                 <label for="title">Title:</label>
                 <input type="text" id="title" name="title" [value]="RequestDetails?.title" disabled>
 
@@ -153,7 +159,7 @@
             <div class="form-row">
                 <label for="status">Status:</label>
                 <div>
-                    <select id="status" name="status"  [(ngModel)]="status" ngModel [disabled]="clicktype!=='Edit'">
+                    <select id="status" name="status" [(ngModel)]="status" ngModel [disabled]="clicktype!=='Edit'">
                         <option value="Open">Open</option>
                         <option value="InProgress">In Progress</option>
                         <option value="Completed">Completed</option>
@@ -163,7 +169,8 @@
 
             <div class="form-row">
                 <label for="resolvedBy">Resolved By:</label>
-                <input type="text" id="resolvedBy" [(ngModel)]="resolvedby" ngModel  name="resolvedby " [disabled]="clicktype!=='Edit'">
+                <input type="text" id="resolvedBy" [(ngModel)]="resolvedby" ngModel name="resolvedby "
+                    [disabled]="clicktype!=='Edit'">
             </div>
         </div>
 
@@ -199,31 +206,25 @@
 
             <div class="form-row">
                 <label for="comment">Comment:</label>
-                <textarea id="comment" rows="2" cols="2" style="height:20px;"  name="comment" [(ngModel)]="comment" ngModel [disabled]="clicktype!=='Edit'"></textarea>
+                <textarea id="comment" rows="2" cols="2" style="height:20px;" name="comment" [(ngModel)]="comment"
+                    ngModel [disabled]="clicktype!=='Edit'"></textarea>
             </div>
 
             <div class="form-row">
                 <label for="resolveddate">Resolved Date:</label>
-                <input type="date" id="resolveddate" name="resolveddate" [(ngModel)]="resolveddate" ngModel [disabled]="clicktype!=='Edit'" >
+                <input type="date" id="resolveddate" name="resolveddate" [(ngModel)]="resolveddate" ngModel
+                    [disabled]="clicktype!=='Edit'">
             </div>
-            
 
-            <div class="form-row" >
-                <div class="updaterequestbtn">
-                    <button class="btn-update" type="button" (click)="onupdateRequest()">Update</button>
-                    <button class="btn-cancel" type="button" (click)="onCancelRequest()">Cancel</button>
+
+            <div class="form-row">
+                <div class="updaterequestbtn" *ngIf="clicktype === 'Edit'">
+                    <button class="btn-update" type="button" (click)="onupdateRequest()"
+                        *ngIf="isUpdateVisible">Update</button>
+                    <button class="btn-cancel" type="button" (click)="onCancelRequest()"
+                        *ngIf="isCancelVisible">Cancel</button>
                 </div>
             </div>
-
         </div>
     </form>
 </div>
-
-
-
-
-
-
-
- 
- 

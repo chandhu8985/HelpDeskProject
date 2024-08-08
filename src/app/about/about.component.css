@@ -1,11 +1,24 @@
-.h2{
-    color: black;
+/* General styles for text elements */
+h3 {
+    color: black; /* Color for all h3 headings */
+    font-size: 20px; /* Font size for h3 headings */
+    font-family: Arial, sans-serif; /* Font family for h3 headings */
 }
-.p{
-    color: rgb(15, 8, 8);
+
+p {
+    color: rgb(15, 8, 8); /* Dark reddish color for paragraphs */
+    font-size: 18px; /* Font size for paragraphs */
+    font-family: 'Times New Roman', serif; /* Font family for paragraphs */
+    line-height: 1.2; /* Increases readability with line height */
+    margin-bottom: 15px; /* Adds space below paragraphs */
 }
-.align{
-    color: rebeccapurple;
-    text-align: center;
-    background-color: lavenderblush;   
+
+/* Styles for elements with the 'align' class */
+.align {
+    color: rebeccapurple; /* Text color */
+    text-align: center; /* Center-aligns text */
+    background-color: lavenderblush; /* Light pink background */
+    padding: 10px; /* Adds padding inside the .align container */
+    font-size: 16px; /* Font size for text inside .align */
+    font-family: 'Georgia', serif; /* Font family for text inside .align */
 }

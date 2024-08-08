@@ -1,11 +1,19 @@
 
-.faq-question{
-    font-size: 18px;
-    font-weight: bold;
-    color: black;
+/* Styles for FAQ questions */
+.faq-question {
+    font-size: 20px; /* Font size for questions */
+    font-weight: bold; /* Makes the text bold */
+    color: black; /* Text color for questions */
+    margin-bottom: 8px; /* Adds space below the question */
+    font-family: Arial, sans-serif; 
 }
-.faq-answer{
-    margin-top: 5px;
-    color: rgb(19, 14, 14);
 
-} 
+/* Styles for FAQ answers */
+.faq-answer {
+    font-size: 19px; /* Font size for answers */
+    color: rgb(19, 14, 14); /* Dark reddish-brown color for answers */
+    margin-top: 5px; /* Adds space above the answer */
+    line-height: 1.6; /* Increases line height for better readability */
+    font-family: 'Times New Roman', serif;
+}
+ 

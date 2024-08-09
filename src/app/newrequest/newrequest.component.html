@@ -116,7 +116,7 @@
         </div>
     </form>
 </div>
-<!---------------- when admin click the edit button  it display the form---------------------------------->
+<!----------------------------- when admin click the edit button  it display the form------------------------------------------->
 
 <div class="admin-form-container" *ngIf="role==='admin'">
     <div *ngIf="clicktype === 'Edit'">
@@ -148,7 +148,7 @@
                 <label for="priority">Priority:</label>
                 <div>
                     <select id="priority" name="priority" [value]="RequestDetails?.priority" disabled>
-                        <option value="label">Select priority</option>
+                        <option value="label">---Select priority---</option>
                         <option value="Low">Low</option>
                         <option value="Medium">Medium</option>
                         <option value="High">High</option>
@@ -224,6 +224,9 @@
                     <button class="btn-cancel" type="button" (click)="onCancelRequest()"
                         *ngIf="isCancelVisible">Cancel</button>
                 </div>
+            </div>
+            <div  *ngIf="clicktype !== 'Edit'">
+                <a href='#' class="back-to-dashboard">BACK</a>
             </div>
         </div>
     </form>

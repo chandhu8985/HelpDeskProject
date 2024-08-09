@@ -19,7 +19,7 @@
     height: 3vh;
     
 }
-#bgcolor{
+.bgcolor{
     color:white;
     background-color: rgb(110, 110, 192);
     border-radius: 5px;

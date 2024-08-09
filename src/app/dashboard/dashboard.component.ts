@@ -12,7 +12,9 @@ import { Router } from '@angular/router';
 
 export class DashboardComponent {
 
-  constructor(private ds: DataService, private router: ActivatedRoute, private routers: Router) { }
+  constructor(private ds: DataService, private router: ActivatedRoute, private routers: Router) { 
+    
+  }
   requests: any;
   useremail: any;
   request!: any;
@@ -24,20 +26,31 @@ export class DashboardComponent {
   alluserDetails!: any
   allrequestDetails!: any
   singleuserDetails!: any
-  
+  sortingCriteria:any
+  statusOrder:any={
+    Open: 1,
+    InProgress: 2,
+    Completed: 3,
+    Cancelled: 4
+  }
+    priorityOrder:any= {
+      high: 1,
+      medium: 2,
+      low: 3
+    }
   
 
   ngOnInit(): void {
-
     this.useremail = this.router.snapshot.params['id']
     console.log(this.useremail)
     this.ds.getrequests().subscribe(data => {
       this.requests = data
       this.filteredRequests = this.requests.filter((request: any) => request.email === this.useremail)
       console.log(this.filteredRequests, 'requests')
+    
 
       //loading user data
-
+   
       this.ds.getData().subscribe(response => {
         this.alluserDetails = response
         console.log(this.alluserDetails, 'userdetails')
@@ -45,7 +58,7 @@ export class DashboardComponent {
     
         console.log(this.singleuserDetails.role, 'res')
 
-
+       
         //displaying data based on role
         if (this.singleuserDetails.role === 'user') {
           this.allrequestDetails = this.filteredRequests
@@ -56,7 +69,6 @@ export class DashboardComponent {
       })
     }
     )
-
   }
    //When click the Requestid  it shows the request details 
 
@@ -80,6 +92,7 @@ export class DashboardComponent {
     this.isVisible = false;
   }
   // When we click the Edit Button  shows the edit request details.
+
   onEditRequest(request: any, type: string) {
     this.ds.setclicktype(type)
     this.ds.onEditRequest(request, request.id).subscribe(
@@ -90,6 +103,7 @@ export class DashboardComponent {
       })
   }
   //  When click the Delete Button Request  status  must be cancelled.
+
   onDeleteRequest(id: number) {
     const response = confirm(`Are you want to Sure Delete the Request?`)
     if (response) {
@@ -109,6 +123,21 @@ export class DashboardComponent {
 
     }
 
+  }
+  
+  sortRequests() {
+    this.sortRequests=this.allrequestDetails.sort((a:any, b:any) => {
+      // Compare by status
+      if (this.sortingCriteria.statusOrder[a.status] !== this.sortingCriteria.statusOrder[b.status]) {
+        return this.sortingCriteria.statusOrder[a.status] - this.sortingCriteria.statusOrder[b.status];
+      }
+      // Compare by priority
+      if (this.sortingCriteria.priorityOrder[a.priority] !== this.sortingCriteria.priorityOrder[b.priority]) {
+        return this.sortingCriteria.priorityOrder[a.priority] - this.sortingCriteria.priorityOrder[b.priority];
+      }
+      // Compare by date and time
+      return a.datetime.getTime() - b.datetime.getTime();
+    });
   }
 
 }

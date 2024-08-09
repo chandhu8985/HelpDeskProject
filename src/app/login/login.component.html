@@ -3,7 +3,9 @@
     <div>
       <img src="login.png" width="130px" height="230px" style="padding: 20px; box-sizing: 20px;">
     </div>
+
     <div class="wrapper">
+
       <form #loginForm="ngForm" (ngSubmit)="login()" ngForm>
         <h2> Login to your Account </h2>
         Enter Email
@@ -17,13 +19,12 @@
         <input type="password" name="pwd" placeholder="Enter Your Password" class="size" ngModel required minlength="6"
           [(ngModel)]="password"><br>
 
-        <span class="error"
-          *ngIf="loginForm.submitted&&loginForm.form.controls['pwd']?.hasError('required')">password
-          is required</span><br>
-        <span class="error"
-          *ngIf="loginForm.submitted&&loginForm.form.controls['pwd']?.hasError('minlength')">minimum
-          6 characters</span>
-        <button id="bgcolor">Login</button>
+        <span class="error" *ngIf="loginForm.submitted&&loginForm.form.controls['pwd']?.hasError('required')">Password
+          is Required</span><br>
+        <span class="error" *ngIf="loginForm.submitted&&loginForm.form.controls['pwd']?.hasError('minlength')">Minimum
+          6 Characters</span>
+          <div ><button class="bgcolor">Login</button></div>
+        
       </form>
     </div>
   </div>

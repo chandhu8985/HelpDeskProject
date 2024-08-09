@@ -34,15 +34,6 @@ export class NewrequestComponent {
   isUpdateVisible: boolean = true; // Control visibility of update button
   isCancelVisible: boolean = true; // Control visibility of cancel button
  
-  toggleEmailField(event: any) {
-    this.isEmailEnabled = !event.target.checked
-    // console.log(event.target.name,event.target.checked)
-  }
-  onCancelRequest(){
-    this.router.navigate([`home/${this.ds.getuseremail()}`])
-  }
-
-  
   ngOnInit(): void {
     this.email=this.ds.getuseremail()
     this.requestid=this.ac.snapshot.params['id']
@@ -64,8 +55,6 @@ export class NewrequestComponent {
        this.category=this.RequestDetails.category
        this.description=this.RequestDetails.description
        this.priority=this.RequestDetails.priority
-
-       
        this.comment=this.RequestDetails.comment
        this.status=this.RequestDetails.status
        this.resolvedby=this.RequestDetails.resolved_by
@@ -74,31 +63,7 @@ export class NewrequestComponent {
      })
     }
   }
-  onupdateRequest(){
-
-    let requestdata={
-      ...this.RequestDetails,
-      title:this.title,
-      category:this.category,
-      description:this.description,
-      priority:this.priority,
-      email:this.email,
-      status:this.status,
-      resolved_by:this.resolvedby,
-      resolved_date:this.resolveddate,
-      comment:this.comment
-
-    }
-    console.log(this.status,this.comment,this.resolvedby,this.resolveddate,'status','comment','resolvedby','resolveddate')
-  this.ds.onEditRequest(requestdata,this.requestid).subscribe(
-    (response:any )=> {
-      console.log(requestdata,'updated')
-    this.router.navigate([`home/${this.ds.getuseremail()}`])
-    // console.log('Request updated successfully', response)
-   console.log(alert(`Your Request updated Successfully! \n Your Request Id is ${this.RequestDetails.id}`))
   
-}) 
-  }
   
   onSubmit(form:any){
     const generateId = () => {
@@ -130,5 +95,40 @@ export class NewrequestComponent {
   }
 
 }
+
+toggleEmailField(event: any) {
+  this.isEmailEnabled = !event.target.checked
+  // console.log(event.target.name,event.target.checked)
+}
+
+onupdateRequest(){
+
+  let requestdata={
+    ...this.RequestDetails,
+    title:this.title,
+    category:this.category,
+    description:this.description,
+    priority:this.priority,
+    email:this.email,
+    status:this.status,
+    resolved_by:this.resolvedby,
+    resolved_date:this.resolveddate,
+    comment:this.comment
+
+  }
+  console.log(this.status,this.comment,this.resolvedby,this.resolveddate,'status','comment','resolvedby','resolveddate')
+this.ds.onEditRequest(requestdata,this.requestid).subscribe(
+  (response:any )=> {
+    console.log(requestdata,'updated')
+  this.router.navigate([`home/${this.ds.getuseremail()}`])
+  // console.log('Request updated successfully', response)
+ console.log(alert(`Your Request updated Successfully! \n Your Request Id is ${this.RequestDetails.id}`))
+
+}) 
+}
+onCancelRequest(){
+  this.router.navigate([`home/${this.ds.getuseremail()}`])
+}
+
 }
 

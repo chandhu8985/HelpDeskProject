@@ -103,7 +103,7 @@
    cursor: pointer;
    margin-left: 150px;
    margin-top: 20px;
-   border-radius: 20%;
+   border-radius: 10%;
    
  }
   
@@ -200,6 +200,7 @@ form {
   display: flex;
   justify-content: space-between;
   gap: 20px;
+
 }
 
 /* Styling for left and right sections */
@@ -218,16 +219,18 @@ form {
   flex: 0 0 150px;
    margin-right: 10px;
    font-weight: bold;
+   color: black;
 }
 
 /* Input and textarea styling */
 .form-row input[type="text"],
 .form-row input[type="email"],
-.form-row textarea,
+.form-row input[type="date"] 
 .form-row select {
   width: 100%;
   padding: 8px;
   border: 1px solid #ddd;
+  font-size: 14px;
   border-radius: 4px;
   box-sizing: border-box;
 }
@@ -238,6 +241,12 @@ form {
 .form-row select[disabled] {
   background-color: #f0f0f0;
   cursor: not-allowed;
+  width:100%;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  
 }
 
 /* Button styling */

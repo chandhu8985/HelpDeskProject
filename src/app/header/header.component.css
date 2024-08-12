@@ -19,7 +19,7 @@ header{
     justify-content: center;
 }
 .user-icon {
-    
+
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -31,8 +31,6 @@ header{
     height:70px;
     padding-top:9px;
     padding-right: 30px;
-  
-
 }
 .options {
     display: none;
@@ -40,8 +38,7 @@ header{
     position: absolute;
     background-color: whitesmoke;
     right: 0;
-   top: 70px;
-   
+    top: 70px;
     border: 1px solid black;
     border-radius: 15%;
     padding: 20px;

@@ -156,13 +156,15 @@
                 </div>
             </div>
 
+
             <div class="form-row">
                 <label for="status">Status:</label>
                 <div>
-                    <select id="status" name="status" [(ngModel)]="status" ngModel [disabled]="clicktype!=='Edit'">
+                    <select id="status" name="status" [(ngModel)]="status" ngModel [disabled]="clicktype!=='Edit'" >
                         <option value="Open">Open</option>
                         <option value="InProgress">In Progress</option>
                         <option value="Completed">Completed</option>
+                        <option value="Cancelled" *ngIf="clicktype!=='Edit'">Cancelled</option>
                     </select>
                 </div>
             </div>
@@ -192,7 +194,7 @@
                 <label for="description">Description:</label>
                 <div>
                     <textarea id="description" name="description" [value]="RequestDetails?.description"
-                        disabled> </textarea>
+                        disabled > </textarea>
                 </div>
             </div>
 
@@ -201,7 +203,7 @@
             <div class="form-row">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" [(ngModel)]="email" ngModel disabled
-                    [disabled]="isEmailEnabled">
+                    [disabled]="isEmailEnabled" style="width: 55%;">
             </div>
 
             <div class="form-row">
@@ -213,7 +215,7 @@
             <div class="form-row">
                 <label for="resolveddate">Resolved Date:</label>
                 <input type="date" id="resolveddate" name="resolveddate" [(ngModel)]="resolveddate" ngModel
-                    [disabled]="clicktype!=='Edit'" style="width: 50%;">
+                    [disabled]="clicktype!=='Edit'" style="width: 50%; height: 20px;">
             </div>
 
 
@@ -224,9 +226,6 @@
                     <button class="btn-cancel" type="button" (click)="onCancelRequest()"
                         *ngIf="isCancelVisible">Cancel</button>
                 </div>
-            </div>
-            <div  *ngIf="clicktype !== 'Edit'">
-                <a href='#' class="back-to-dashboard">BACK</a>
             </div>
         </div>
     </form>

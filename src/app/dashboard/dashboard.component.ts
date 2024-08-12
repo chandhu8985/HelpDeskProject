@@ -41,38 +41,9 @@ export class DashboardComponent {
    
   sortRequests:any;
   
-  
-
   ngOnInit(): void {
     this.useremail = this.router.snapshot.params['id']
     console.log(this.useremail)
-    // this.ds.getrequests().subscribe(data => {
-    //   this.requests = data
-    //   this.filteredRequests = this.requests.filter((request: any) => request.email === this.useremail)
-    //   console.log(this.filteredRequests, 'requests')
-    
-
-    //   //loading user data
-   
-    //   this.ds.getData().subscribe(response => {
-    //     this.alluserDetails = response
-    //     console.log(this.alluserDetails, 'userdetails')
-    //     this.singleuserDetails = this.alluserDetails.find((user: any) => user.email === this.useremail)
-    
-    //     console.log(this.singleuserDetails.role, 'res')
-
-       
-    //     //displaying data based on role
-    //     if (this.singleuserDetails.role === 'user') {
-    //       this.allrequestDetails = this.filteredRequests
-    //     }
-    //     else {
-    //       this.allrequestDetails = this.requests
-    //     }
-    //     this.sortRequests = this.sortRequestsByCriteria(this.allrequestDetails);
-    //   })
-    // }
-    // )
     this.loadData();
   }
   loadData(){

@@ -18,11 +18,11 @@
             <th> Created Date</th>
             <th>Resolved By</th>
             <th>Resolved Date</th>
-            <th> Actions</th>
+            <th align="center"> Actions</th>
          </tr>
       </thead>
       <tbody>
-         <tr *ngFor="let request of allrequestDetails">
+         <tr *ngFor="let request of sortRequests">
             <td><a class="request-id" (click)="onRequestClick(request,'view')">{{request.id}}</a></td>
             <td> {{request.title}}</td>
             <td> {{request.description}}</td>

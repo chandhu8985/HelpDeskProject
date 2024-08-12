@@ -87,8 +87,11 @@ export class NewrequestComponent {
   console.log(data)
   if(form.valid)
   {
-    this.ds.postData(data).subscribe((res)=> alert(`Your Request Added Successfully! \n Your Request Id is ${data.id}`))
+    this.ds.postData(data).subscribe((res)=>{
+      alert(`Your Request Added Successfully! \n Your Request Id is ${data.id}`)
     this.router.navigate([`home/${this.ds.getuseremail()}`])
+    }
+  )
   }
   else {
     alert('Fill the Required Fields')
@@ -98,7 +101,7 @@ export class NewrequestComponent {
 
 toggleEmailField(event: any) {
   this.isEmailEnabled = !event.target.checked
-  // console.log(event.target.name,event.target.checked)
+ 
 }
 
 onupdateRequest(){
@@ -116,12 +119,11 @@ onupdateRequest(){
     comment:this.comment
 
   }
-  console.log(this.status,this.comment,this.resolvedby,this.resolveddate,'status','comment','resolvedby','resolveddate')
+ 
 this.ds.onEditRequest(requestdata,this.requestid).subscribe(
   (response:any )=> {
     console.log(requestdata,'updated')
   this.router.navigate([`home/${this.ds.getuseremail()}`])
-  // console.log('Request updated successfully', response)
  console.log(alert(`Your Request updated Successfully! \n Your Request Id is ${this.RequestDetails.id}`))
 
 }) 

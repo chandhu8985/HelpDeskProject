@@ -206,14 +206,14 @@
 
             <div class="form-row">
                 <label for="comment">Comment:</label>
-                <textarea id="comment" rows="2" cols="2" style="height:20px;" name="comment" [(ngModel)]="comment"
-                    ngModel [disabled]="clicktype!=='Edit'"></textarea>
+                <input id="comment" rows="2" cols="2" style=" width: 50%; height: 20px;" name="comment" [(ngModel)]="comment"
+                    ngModel [disabled]="clicktype!=='Edit'">
             </div>
 
             <div class="form-row">
                 <label for="resolveddate">Resolved Date:</label>
                 <input type="date" id="resolveddate" name="resolveddate" [(ngModel)]="resolveddate" ngModel
-                    [disabled]="clicktype!=='Edit'">
+                    [disabled]="clicktype!=='Edit'" style="width: 50%;">
             </div>
 
 

@@ -27,22 +27,55 @@ export class DashboardComponent {
   allrequestDetails!: any
   singleuserDetails!: any
   sortingCriteria:any
-  statusOrder:any={
+  statusOrder: any = {
     Open: 1,
     InProgress: 2,
     Completed: 3,
     Cancelled: 4
-  }
-    priorityOrder:any= {
-      high: 1,
-      medium: 2,
-      low: 3
-    }
+  };
+  priorityOrder: any = {
+    high: 1,
+    medium: 2,
+    low: 3
+  };
+   
+  sortRequests:any;
+  
   
 
   ngOnInit(): void {
     this.useremail = this.router.snapshot.params['id']
     console.log(this.useremail)
+    // this.ds.getrequests().subscribe(data => {
+    //   this.requests = data
+    //   this.filteredRequests = this.requests.filter((request: any) => request.email === this.useremail)
+    //   console.log(this.filteredRequests, 'requests')
+    
+
+    //   //loading user data
+   
+    //   this.ds.getData().subscribe(response => {
+    //     this.alluserDetails = response
+    //     console.log(this.alluserDetails, 'userdetails')
+    //     this.singleuserDetails = this.alluserDetails.find((user: any) => user.email === this.useremail)
+    
+    //     console.log(this.singleuserDetails.role, 'res')
+
+       
+    //     //displaying data based on role
+    //     if (this.singleuserDetails.role === 'user') {
+    //       this.allrequestDetails = this.filteredRequests
+    //     }
+    //     else {
+    //       this.allrequestDetails = this.requests
+    //     }
+    //     this.sortRequests = this.sortRequestsByCriteria(this.allrequestDetails);
+    //   })
+    // }
+    // )
+    this.loadData();
+  }
+  loadData(){
     this.ds.getrequests().subscribe(data => {
       this.requests = data
       this.filteredRequests = this.requests.filter((request: any) => request.email === this.useremail)
@@ -66,6 +99,7 @@ export class DashboardComponent {
         else {
           this.allrequestDetails = this.requests
         }
+        this.sortRequests = this.sortRequestsByCriteria(this.allrequestDetails);
       })
     }
     )
@@ -119,25 +153,35 @@ export class DashboardComponent {
         (response: any) => {
 
           console.log(alert(`Your Request Deleted  Successfully! \n Your Request Id is ${id}`))
+          this.loadData();
+
         })
 
     }
 
   }
   
-  sortRequests() {
-    this.sortRequests=this.allrequestDetails.sort((a:any, b:any) => {
-      // Compare by status
-      if (this.sortingCriteria.statusOrder[a.status] !== this.sortingCriteria.statusOrder[b.status]) {
-        return this.sortingCriteria.statusOrder[a.status] - this.sortingCriteria.statusOrder[b.status];
-      }
-      // Compare by priority
-      if (this.sortingCriteria.priorityOrder[a.priority] !== this.sortingCriteria.priorityOrder[b.priority]) {
-        return this.sortingCriteria.priorityOrder[a.priority] - this.sortingCriteria.priorityOrder[b.priority];
-      }
-      // Compare by date and time
-      return a.datetime.getTime() - b.datetime.getTime();
+  sortRequestsByCriteria(requests: any[]) {
+    return requests.sort((a: any, b: any) => {
+      return this.compareByStatus(a, b) || 
+             this.compareByPriority(a, b) || 
+             this.compareByDate(a, b);
     });
+  }
+
+  // Compare by status
+  compareByStatus(a: any, b: any): number {
+    return this.statusOrder[a.status] - this.statusOrder[b.status];
+  }
+
+  // Compare by priority
+  compareByPriority(a: any, b: any): number {
+    return this.priorityOrder[a.priority] - this.priorityOrder[b.priority];
+  }
+
+  // Compare by created date
+  compareByDate(a: any, b: any): number {
+    return new Date(a.createdDate).getTime() - new Date(b.createdDate).getTime();
   }
 
 }

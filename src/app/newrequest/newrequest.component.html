@@ -118,7 +118,7 @@
 </div>
 <!----------------------------- when admin click the edit button  it display the form------------------------------------------->
 
-<div class="admin-form-container" *ngIf="role==='admin'">
+<div class="form-container" *ngIf="role==='admin'">
     <div *ngIf="clicktype === 'Edit'">
         <h1><b>Update Request</b></h1>
     </div>
@@ -147,7 +147,7 @@
             <div class="form-row">
                 <label for="priority">Priority:</label>
                 <div>
-                    <select id="priority" name="priority" [value]="RequestDetails?.priority" disabled>
+                    <select id="priority" name="priority" [value]="RequestDetails?.priority" disabled style="width: 100%;">
                         <option value="label">---Select priority---</option>
                         <option value="Low">Low</option>
                         <option value="Medium">Medium</option>
@@ -208,18 +208,18 @@
 
             <div class="form-row">
                 <label for="comment">Comment:</label>
-                <input id="comment" rows="2" cols="2" style=" width: 50%; height: 20px;" name="comment" [(ngModel)]="comment"
+                <input id="comment" rows="2" cols="2" style=" width: 55%; height: 25px;" name="comment" [(ngModel)]="comment"
                     ngModel [disabled]="clicktype!=='Edit'">
             </div>
 
             <div class="form-row">
                 <label for="resolveddate">Resolved Date:</label>
                 <input type="date" id="resolveddate" name="resolveddate" [(ngModel)]="resolveddate" ngModel
-                    [disabled]="clicktype!=='Edit'" style="width: 50%; height: 20px;">
+                    [disabled]="clicktype!=='Edit'" style="width: 55%; height: 25px;">
             </div>
 
 
-            <div class="form-row">
+            <div class="form-btn">
                 <div class="updaterequestbtn" *ngIf="clicktype === 'Edit'">
                     <button class="btn-update" type="button" (click)="onupdateRequest()"
                         *ngIf="isUpdateVisible">Update</button>

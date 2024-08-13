@@ -1,7 +1,7 @@
 
  .form-container {
    width: 50%;
-   height: 400px;
+   height: 450px;
    margin-top: 120px;
    margin-left: 400px;
    padding: 20px;
@@ -36,7 +36,12 @@
    display: flex;
    align-items: center;
    margin-bottom: 15px; 
+ 
    
+ }
+ .form-btn{
+  justify-content: end;
+
  }
 
  .form-row label {
@@ -51,7 +56,7 @@
  .form-row div select,
  .form-row textarea {
    
-  min-width: 200px;
+  min-width: 250px; 
    padding: 8px;
    font-size: 14px;
    border: 1px solid #ccc;
@@ -64,7 +69,7 @@
  #description,
  #status,
  #email {
-   height: 30px;
+   height: 35px;
  
  }
 
@@ -174,127 +179,5 @@
 }
                /*......................... admin update request form............................ */
  
-/* Container styling */
-.admin-form-container {
-  width: 50%;
-  height: 400px;
-  margin-top: 120px;
-  margin-left: 400px;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-  box-shadow: 3px 3px 10px 2px rgba(0, 0, 0, 0.5);
 
-}
-
-/* Heading styling */
-.admin-form-container h1 {
-  margin-top: 0;
-   text-align: center;
-   margin-bottom: 20px;
-}
-
-/* Form styling */
-form {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-
-}
-
-/* Styling for left and right sections */
-.left, .right {
-  flex: 1;
-}
-
-/* Row styling */
-.form-row {
-  margin-top: 5px;
-  margin-bottom: 15px;
-}
-
-/* Label styling */
-.form-row label {
-  flex: 0 0 150px;
-   margin-right: 10px;
-   font-weight: bold;
-   color: black;
-}
-
-/* Input and textarea styling */
-.form-row input[type="text"],
-.form-row input[type="email"],
-.form-row input[type="date"] 
-.form-row select {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ddd;
-  font-size: 14px;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-/* Disabled input styling */
-.form-row input[disabled],
-.form-row textarea[disabled],
-.form-row select[disabled] {
-  background-color: #f0f0f0;
-  cursor: not-allowed;
-  width:100%;
-  border: 1px solid #ddd;
-  font-size: 14px;
-  border-radius: 4px;
-  box-sizing: border-box;
-  
-}
-
-/* Button styling */
-.btn-update,
-.btn-cancel {
-  padding: 10px 15px;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-  margin-right: 30px;
-}
-
-.btn-update {
-  background-color: rgb(48, 185, 231);;
-  color: #fff;
-}
-
-.btn-update:hover {
-  background-color: #218838;
-}
-
-.btn-cancel {
-  background-color: rgb(48, 185, 231);;
-  color: #fff;
-}
-
-.btn-cancel:hover {
-  background-color: #c82333;
-}
-
-/* Ensure the buttons are aligned properly */
-.updaterequestbtn {
-  display: flex;
-  justify-content: flex-start;
-  margin-top: 20px;
-}
-/* .back-to-dashboard {
-  text-decoration: none;
-  color: #007bff; 
-  font-weight: bold;
-  padding: 10px;
-  border: 1px solid #007bff;
-  border-radius: 5px;
-  display: inline-block;
-}
-
-.back-to-dashboard:hover {
-  background-color: #e7f0ff;
-} */
 

@@ -12,8 +12,8 @@ import { Router } from '@angular/router';
 
 export class DashboardComponent {
 
-  constructor(private ds: DataService, private router: ActivatedRoute, private routers: Router) { 
-    
+  constructor(private ds: DataService, private router: ActivatedRoute, private routers: Router) {
+
   }
   requests: any;
   useremail: any;
@@ -22,11 +22,11 @@ export class DashboardComponent {
   filteredRequests: any;
   Requestdetails: any;
   updateRequest: any
-  isVisible: boolean=false;
+  isVisible: boolean = false;
   alluserDetails!: any
   allrequestDetails!: any
   singleuserDetails!: any
-  sortingCriteria:any
+  sortingCriteria: any
   statusOrder: any = {
     Open: 1,
     InProgress: 2,
@@ -34,35 +34,35 @@ export class DashboardComponent {
     Cancelled: 4
   };
   priorityOrder: any = {
-    high: 1,
-    medium: 2,
-    low: 3
+    High: 1,
+    Medium: 2,
+    Low: 3
   };
-   
-  sortRequests:any;
-  
+
+  sortRequests: any;
+
   ngOnInit(): void {
     this.useremail = this.router.snapshot.params['id']
     console.log(this.useremail)
     this.loadData();
   }
-  loadData(){
+  loadData() {
     this.ds.getrequests().subscribe(data => {
       this.requests = data
       this.filteredRequests = this.requests.filter((request: any) => request.email === this.useremail)
       console.log(this.filteredRequests, 'requests')
-    
+
 
       //loading user data
-   
+
       this.ds.getData().subscribe(response => {
         this.alluserDetails = response
         console.log(this.alluserDetails, 'userdetails')
         this.singleuserDetails = this.alluserDetails.find((user: any) => user.email === this.useremail)
-    
+
         console.log(this.singleuserDetails.role, 'res')
 
-       
+
         //displaying data based on role
         if (this.singleuserDetails.role === 'user') {
           this.allrequestDetails = this.filteredRequests
@@ -70,26 +70,33 @@ export class DashboardComponent {
         else {
           this.allrequestDetails = this.requests
         }
-        this.sortRequests = this.sortRequestsByCriteria(this.allrequestDetails);
+        this.sortRequests = this.allrequestDetails.sort((a: any, b: any) => {
+          return this.compareByStatus(a, b) ||
+            this.compareByPriority(a, b) ||
+            this.compareByDate(a, b);
+        });
+        console.log(this.sortRequests)
       })
     }
     )
   }
-   //When click the Requestid  it shows the request details 
 
-  onRequestClick(requests: any,type:string) {
+
+  //When click the Requestid  it shows the request details 
+
+  onRequestClick(requests: any, type: string) {
     this.ds.setclicktype(type)
     this.ds.getrequests().subscribe(res => {
       this.Requestdetails = res
       this.Requestdetails = this.Requestdetails.find((request: any) => request.id === requests.id);
       console.log(this.Requestdetails)
-      if(this.singleuserDetails.role==='user'){
+      if (this.singleuserDetails.role === 'user') {
         this.isVisible = true;
       }
-      else{
+      else {
         this.routers.navigate([`home/${this.useremail}/newrequest/${requests.id}`])
       }
-     
+
     }
     )
   }
@@ -131,14 +138,9 @@ export class DashboardComponent {
     }
 
   }
+
   
-  sortRequestsByCriteria(requests: any[]) {
-    return requests.sort((a: any, b: any) => {
-      return this.compareByStatus(a, b) || 
-             this.compareByPriority(a, b) || 
-             this.compareByDate(a, b);
-    });
-  }
+  // APPLYING FILTERS FOR REQUESTS BASED ON STATUS,PRIORITY,COMPAREBYDATE
 
   // Compare by status
   compareByStatus(a: any, b: any): number {
